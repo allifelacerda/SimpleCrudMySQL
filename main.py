@@ -2,7 +2,6 @@ from tkinter import ttk
 from tkinter import *
 from functools import partial
 from tkinter import messagebox
-from turtle import title
 from Product import Product
 from ProductDB import ProductDB
 
