@@ -148,7 +148,7 @@ class App():
             self.get_products()
             self.edit_wind.destroy()
         else:
-            messagebox.Message(message = "Erro.")        
+            messagebox.showinfo(message = "invalid input")        
             
 def on_closing():
     if messagebox.askokcancel("Quit", "Do you want to quit?"):
