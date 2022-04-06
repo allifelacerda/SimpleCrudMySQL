@@ -1,5 +1,4 @@
 import mysql.connector
-from Product import Product
 
 class ProductDB:
     def __init__(self, username="root", password="1234"):

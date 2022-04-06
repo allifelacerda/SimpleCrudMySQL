@@ -150,8 +150,12 @@ class App():
         self.edit_wind.destroy()
 
 if __name__ == '__main__':
-    root = Tk()
-    root.resizable(0,0)
     prodDB = ProductDB()
-    app = App(root, prodDB)
-    root.mainloop()
+    if prodDB:   
+        root = Tk()
+        root.resizable(0,0)
+        app = App(root, prodDB)
+        root.mainloop()
+    else:
+        print("Error db")
+        
