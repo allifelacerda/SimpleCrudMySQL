@@ -142,7 +142,6 @@ class App():
         name = self.tree.item(self.tree.selection())['values'][1]
         old_price = self.tree.item(self.tree.selection())['values'][2]
         self.build_edit_window(id, name, old_price)
-        return
     
     def edit_records(self, id, new_name, new_price):      
         prodDB.edit_product(id, new_name, new_price)
