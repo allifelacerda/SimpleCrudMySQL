@@ -1,8 +1,7 @@
-from cmath import rect
 from tkinter import ttk
 from tkinter import *
 from functools import partial
-import tkinter
+from tkinter import messagebox
 from turtle import title
 from Product import Product
 from ProductDB import ProductDB
@@ -143,10 +142,19 @@ class App():
         old_price = self.tree.item(self.tree.selection())['values'][2]
         self.build_edit_window(id, name, old_price)
     
-    def edit_records(self, id, new_name, new_price):      
-        prodDB.edit_product(id, new_name, new_price)
-        self.get_products()
-        self.edit_wind.destroy()
+    def edit_records(self, id, new_name, new_price):
+        if self.validation(new_name, new_price):              
+            prodDB.edit_product(id, new_name, new_price)
+            self.get_products()
+            self.edit_wind.destroy()
+        else:
+            messagebox.Message(message = "Erro.")        
+            
+def on_closing():
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        prodDB.close_connection()
+        root.destroy()
+        
 
 if __name__ == '__main__':
     prodDB = ProductDB()
@@ -154,6 +162,7 @@ if __name__ == '__main__':
         root = Tk()
         root.resizable(0,0)
         app = App(root, prodDB)
+        root.protocol("WM_DELETE_WINDOW", on_closing)
         root.mainloop()
     else:
         print("Error db")

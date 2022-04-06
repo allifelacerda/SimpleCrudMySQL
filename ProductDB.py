@@ -8,7 +8,11 @@ class ProductDB:
                               auth_plugin='mysql_native_password')
             self.cursor = self.cnx.cursor()
         except Exception as e:
+            #error_code = str(e)[:4]
             raise
+    
+    def close_connection(self):
+        self.cnx.close()
     
     def add_product(self, Product):
         name = Product.get_name()
